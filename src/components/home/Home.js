@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './home.css';
-import logo from './logo.svg';
+import { Login } from '../account';
+import logo from '../../logo.svg';
 
 export default class Home extends Component {
   render() {
@@ -10,9 +10,6 @@ export default class Home extends Component {
           <img src={logo} className="home-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className="home-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }

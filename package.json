@@ -1,13 +1,36 @@
 {
-  "name": "with-create-react-app",
+  "name": "react-book-trading-mui",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-md": "^1.2.8",
     "react-router-dom": "^4.2.2",
-    "webfontloader": "^1.6.28"
+    "webfontloader": "^1.6.28",
+    "axios": "^0.9.1",
+    "babel-jest": "^23.0.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "history": "^4.7.2",
+    "jest": "^23.1.0",
+    "jquery": "^3.2.1",
+    "masonry-layout": "^4.2.1",
+    "material-design-icons": "^3.0.1",
+
+    "react-mason": "^1.1.2",
+    "react-redux": "^5.0.7",
+    "react-responsive-masonry": "^2.0.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "node-sass-chokidar": "^0.0.3",
