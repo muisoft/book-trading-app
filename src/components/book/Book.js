@@ -4,9 +4,9 @@ import { Card, Button, CardActions } from 'react-md';
 
 import { withMainComponent } from '../hoc';
 
-const Book = ({title, _id, url, author, request, requestBy, userId, approved, username, user, onClick, label, 
+const Book = ({title, _id, url, author, request, requestBy, userId, approved, username, user, onClick, label,
               handleRequestForMe, returnBorrowedBook, requestCancel, handleRequest, deleteBook}) => {
-    
+
     const args = {
         id: _id,
         to: user,
@@ -19,10 +19,10 @@ const Book = ({title, _id, url, author, request, requestBy, userId, approved, us
     }
     const styles = {
         button: {
-            width: 140, 
-            height: 22, 
-            fontSize: 10, 
-            fontWeight: 'bold', 
+            width: 140,
+            height: 22,
+            fontSize: 10,
+            fontWeight: 'bold',
             lineHeight: '10px'
         }
     }
@@ -39,38 +39,41 @@ const Book = ({title, _id, url, author, request, requestBy, userId, approved, us
                 return deleteBook(args);
             case 'request':
                 return handleRequest(args);
-            case 'cancel': 
+            case 'cancel':
                 return requestCancel(args);
             case 'approved':
                 return  handleRequestForMe(args);
             case 'return':
-                return returnBorrowedBook(args);            
+                return returnBorrowedBook(args);
            // default:
                // break;
         }
     }
+    const handleError = (e) => {
+      e.target.src = '/8.jpg';
+    }
     return (
         <Card className="my-card" raise>
             <div>
-                <img src={url} style={{ width: '140px', height: '200px' }} alt={title} />
+                <img src={url} onError={handleError} style={{ width: '140px', height: '200px' }} alt={title} />
             </div>
             <div style={{marginTop: -4}}>
-               <Button 
-                id="d" 
-                raised 
-                primary 
+               <Button
+                id="d"
+                raised
+                primary
                 disabled={!username || (username && label === 'request' && user === userId) ? true : false}
                 style={styles.button}
                 onClick={() => handleClickButton(label)}>
                   {label}
-             </Button> 
-            </div> 
+             </Button>
+            </div>
         </Card>
     )
 }
 
 Book.PropTypes = {
-  title: PropTypes.string, 
+  title: PropTypes.string,
   url: PropTypes.string,
   author: PropTypes.string,
   label: PropTypes.string,
@@ -79,7 +82,7 @@ Book.PropTypes = {
   handleRequest: PropTypes.func.isRequired,
   deleteBook: PropTypes.func.isRequired,
   returnBorrowedBook: PropTypes.func.isRequired
-  
+
 }
 
 export default Book;
