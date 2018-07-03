@@ -1,52 +1,52 @@
 
 body {
-     font-family: "Roboto", sans-serif;  
+     font-family: "Roboto", sans-serif;
 }
 @import '../../globals';
 html {
-     background: rgba(0, 0, 0, 0.05); 
+     background: rgba(0, 0, 0, 0.05);
     font-size: 14px;
-    min-width: 100%; 
+    min-width: 100%;
 }
 @include react-md-everything;
 a {
   text-decoration:  none;
-  color: #fff; 
+  color: #fff;
 }
 .login-wrapper {
    position: absolute;
    top: -360px;
    left: 25%;
-   height: 300px;    
+   height: 300px;
 }
 .message {
   text-align: center;
 }
-.option-signin { 
+.option-signin {
    font-size: 16px;
    display: flex;
    flex-direction: row;
    justify-content: center;
-   align-items: center;  
+   align-items: center;
 }
 .btn {
   display: flex;
   justify-content: center;
-  align-items: center;  
-}
-.login-form { 
-  display: flex; 
-  flex-direction: column;
-  justify-content: center; 
   align-items: center;
-  padding-top: 5px; 
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
   padding-left: 5px;
     .line-divider {
       width: 260px;
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center; 
+      justify-content: center;
       padding: 10px;
     }
     .line-divider span {
@@ -63,7 +63,7 @@ a {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 0;   
+    margin: 0;
 }
 .card_actions {
     display: flex;
@@ -103,15 +103,15 @@ a {
     justify-content: center;
   }
   .my-card {
-   margin: 3px; 
+   margin: 3px;
   }
 }
 .social-button {
   color: #fff;
 }
-.social-icon { 
-  margin-right: 5px; 
-  color: #fff 
+.social-icon {
+  margin-right: 5px;
+  color: #fff
 }
 .facebook-button {
   @extend .social-button;
@@ -119,6 +119,8 @@ a {
 }
 .twitter-button {
   @extend .social-button;
+  padding-top: 5px;
+  padding-bottom: 5px;
   background-color: #55acee;
 }
 .masonry-grid {
@@ -140,5 +142,5 @@ a {
        justify-content: flex-end;
        font-size: 10px;
        width: 100px;
-    } 
+    }
 }

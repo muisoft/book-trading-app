@@ -39,9 +39,9 @@ const Signup = ({ onSignup, handleChange }) => {
                                 <Divider />
                             </div>
 
-                            <Button raised primary style={{ marginTop: 15 }} type="submit">Sign up</Button>
+                            <Button raised primary style={{ marginTop: 25 }} type="submit">Sign up</Button>
                         </div>
-                        <div className="option-signin" style={{marginTop: 25}}>
+                        <div className="option-signin" style={{marginTop: 15}}>
                             <span style={{ paddingRight: 5, wordWrap: 'break-word' }}>Already have an account? </span><Button href="/account/login" primary> Sign in</Button>
                         </div>
                     </div>

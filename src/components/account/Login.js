@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //import axios from 'axios';
 import { Button, TextField, Card, FontIcon, Divider } from 'react-md';
- 
+
  import { Link, Redirect } from 'react-router-dom';
 import { push } from 'react-router-redux';
 import { withMainComponent } from '../hoc';
@@ -12,17 +12,17 @@ import '../style/styles.css';
 
 const Login = ({ onSignin, partialState, gotoTwitter, user, handleChange, location, history }) => {
    const styles = {
-       submitButton: { 
-         marginTop: 15 
+       submitButton: {
+         marginTop: 15
        },
-       divider: { 
-         width: 150 
+       divider: {
+         width: 150
        },
        signin: {
          width: 400
        },
-       optionSignin: { 
-         paddingRight: 5 
+       optionSignin: {
+         paddingRight: 5
        }
    }
     const login_twitter_url = process.env.NODE_ENV === "production"?
@@ -63,7 +63,7 @@ const Login = ({ onSignin, partialState, gotoTwitter, user, handleChange, locati
                     <Button raised primary style={styles.submitButton} type="submit">Login</Button>
                 </div>
 
-                <div className="option-signin">
+                <div className="option-signin" style={{marginTop: 10, marginBottom: 20}}>
                     <span style={styles.optionSign}>You don't have an account? </span><Button flat href="/account/signup" primary> Get one</Button>
                 </div>
             </div>
@@ -74,7 +74,7 @@ Login.PropTypes = {
     onSignin: PropTypes.func.isRequired,
     partialState: PropTypes.object,
     user: PropTypes.object,
-    handleChange: PropTypes.func.isRequired,  
+    handleChange: PropTypes.func.isRequired,
 }
 
 export default withMainComponent(Login);

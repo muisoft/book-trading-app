@@ -5,13 +5,13 @@ const path = require('path');
 const morgan = require('morgan');
 
 const normalizePort = port => parseInt(port, 10);
-const PORT = normalizePort(process.env.PORT || 5000);
+const PORT = normalizePort(process.env.PORT || 5002);
 
 const app = express();
 const dev = app.get('env') !== 'production';
 
 if(!dev){
-  app.diseble('x-powered-by');
+  app.disable('x-powered-by');
   app.use(compression());
   app.use(morgan('common'));
 
@@ -24,6 +24,11 @@ if(!dev){
 
 if(dev){
   app.use(morgan('dev'));
+
+  //app.use(express.static(path.resolve(__dirname, 'public', 'index.html')));
+//  app.get('/*', (req, res) => {
+    //res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+//  })
 }
 
 const server = createServer(app);
