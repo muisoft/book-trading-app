@@ -4,8 +4,8 @@ const User = require('mongoose').model('User');
 
 module.exports = () => {
     passport.use('twitter-login', new TwitterStrategy({
-        consumerKey: 'OhbleNnTnMiwgyd3LeRmSILzt',//process.env.TWITTER_API_KEY,
-        consumerSecret: 'MP7MAsDcplxLl5jKaQmxEjUYXVDAZgtkP8GCGHI9vUtMwqjOfc',//process.env.TWITTER_API_SECRET,
+        consumerKey: process.env.TWITTER_API_KEY,
+        consumerSecret: process.env.TWITTER_API_SECRET,
         callbackURL: '/auth/twitter/callback'
     }, (accessToken, refreshToken, profile, done) => {
         User.findOneAndUpdate(

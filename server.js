@@ -12,7 +12,7 @@ const passport = require( 'passport');
 const normalizePort = port => parseInt(port, 10);
 const PORT = normalizePort(process.env.PORT || 5002);
 
-require('./api/models')('mongodb://localhost:27017/booktrading');
+require('./api/models')(process.env.DB_CONN);
 
 const app = express();
 const dev = app.get('env') !== 'production';
