@@ -49,7 +49,7 @@ export const isError = (status) => {
 export const hideDialog = () => {
     return {
         type: ActionType.HIDE_DIALOG,
-        
+
     }
 }
 export const isSaved = (payload) => {
@@ -131,27 +131,34 @@ export const getBooks = (url) => {
     return getData(url, isSuccess);
 }
 export const getData = (url, done) => {
-    return (dispatch) => {
-        dispatch(isLoading(true));
-        fetch(url, {
-  credentials: 'include'
-})
+  return (dispatch) => {
+      // dispatch(isLoading(true));
+        fetch(url,
+          {
+             headers: {
+               'Accept': 'application/json',
+               'Content-Type': 'application/json',
+               'Cache': 'no-cache'
+            },
+            credentials: 'same-origin'
+          })
             .then((response) => {
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }
-                dispatch(isLoading(false));
+              //  dispatch(isLoading(false));
                 return response;
             })
             .then((response) => response.json())
             .then((response) => {
+                console.log('Yewo: '+JSON.stringify(response));
                 dispatch(done(response));
             })
             .catch(() => dispatch(isError(true)))
     }
 }
 const postData = (url, payload, done) => {
-    
+
      return (dispatch) => {
        fetch(url, {
            method: 'POST',
