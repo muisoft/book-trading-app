@@ -42,4 +42,5 @@ ToolbarActions.PropTypes = {
     pathname: PropTypes.string,
     user: PropTypes.object
 }
+
 export default withMainComponent(ToolbarActions);

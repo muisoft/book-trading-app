@@ -1,7 +1,7 @@
 /* eslint-disable-line no-alert */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { TextField, Divider, Card, Button, Snackbar } from 'react-md';
+import { TextField, Divider, Card, Button } from 'react-md';
 
 import { withMainComponent } from '../hoc';
 

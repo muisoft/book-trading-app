@@ -6,13 +6,12 @@ import {
   AccessibleFakeButton,
   IconSeparator,
   DropdownMenu,
-  Button,
   ListItem
 } from 'react-md';
 
 import { withMainComponent } from '../hoc';
 
-const AccountMenu = ({ simplifiedMenu, username, image, handleSignout, signout }) => {
+const AccountMenu = ({ simplifiedMenu, username, image, signout }) => {
   return (
     <DropdownMenu
       id='account-menu'

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { withMainComponent } from '../hoc';
@@ -6,13 +6,14 @@ import { withMainComponent } from '../hoc';
 import Profile from './Profile';
 import Password from './Password';
 
-const Settings = ({user, changeProfile, changePassword, handleChange}) =>{
+const Settings = ({user, changeProfile, partialState, changePassword, handleChange}) =>{
    const profileProps = {
      fullname: user.fullname,
      city: user.city,
      state: user.state,
      changeProfile: changeProfile,
-     handleChange: handleChange
+     handleChange: handleChange,
+     partialState: partialState
    }
    const passwordProps = {
      changePassword: changePassword,

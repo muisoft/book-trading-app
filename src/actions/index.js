@@ -75,34 +75,40 @@ export const getTabIndex = (payload) => {
     }
 }
 
-
 export const addNewBook = (payload) => {
-    return postData('/save', payload, isSaved);
+    return postData('/savebook', payload, isSaved);
 }
 export const deleteBook = (book) => {
-    return postData('/deleteBook', book, isSaved);
+    return postData('/deletebook', book, isSaved);
 }
 export const requestBook = (book) => {
-   return postData('/requestBook', book, isSaved);
+    return postData('/requestbook', book, isSaved);
 }
 export const cancelRequest = (book) => {
-   return postData('/cancelRequest', book, isSaved);
+   return postData('/cancelrequest', book, isSaved);
 }
 export const approvedRequest = (book) => {
-   return postData('/approvedRequest', book, isSaved);
+   return postData('/approvedrequest', book, isSaved);
 }
-export const borrowedBook = (book) => {
-   return getData('/borrowedBook', isBorrowedBook);
+export const changePassword = (payload) => {
+    return postData('/updatepassword', payload, isSaved);
+}
+export const changeProfile = (payload) => {
+    return postData('/updateprofile', payload, isSaved);
 }
 export const returnBorrowedBook = (book) => {
-    return postData('/returnBorrowedBook', book, isSaved);
+    return postData('/returnbook', book, isSaved);
+}
+
+
+export const borrowedBook = () => {
+   return getData('/borrowedbook', isBorrowedBook);
 }
 export const requestForMe = (book) => {
-   return getData('/requestForMe', isRequestForMe);
+   return getData('/requestforme', isRequestForMe);
 }
 export const myRequest = (book) => {
- // console.log('ID2: '+ payload.id);
-   return getData('/myRequest', isMyRequest);
+   return getData('/myrequest', isMyRequest);
 }
 export const signin = (user) => {
     return postData('/signin', user, isSignin);
@@ -113,18 +119,13 @@ export const signout = () => {
 export const twitterSignin = () => {
     return getData('/auth/twitter', isSaved);
 }
-export const changePassword = (payload) => {
-   return postData('/updatePassword', payload, isSaved);
-}
-export const changeProfile = (payload) => {
-    return postData('/updateProfile', payload, isSaved);
-}
+
 
 export const signup = (user) => {
-    return postData('/signup', user, isSaved);
+    return postData('/signup', user, isSignin);
 }
-export const getMyBooks = (payload) => {
-    return getData('/myBooks', isMyBooks);
+export const getMyBooks = () => {
+    return getData('/mybooks', isMyBooks);
 }
 
 export const getBooks = (url) => {
@@ -132,29 +133,26 @@ export const getBooks = (url) => {
 }
 export const getData = (url, done) => {
   return (dispatch) => {
-      // dispatch(isLoading(true));
-        fetch(url,
+      fetch(url,
           {
-             headers: {
-               'Accept': 'application/json',
-               'Content-Type': 'application/json',
-               'Cache': 'no-cache'
-            },
-            credentials: 'same-origin'
+              headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'Cache': 'no-cache'
+              },
+              credentials: 'same-origin'
           })
-            .then((response) => {
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-              //  dispatch(isLoading(false));
-                return response;
-            })
-            .then((response) => response.json())
-            .then((response) => {
-                console.log('Yewo: '+JSON.stringify(response));
-                dispatch(done(response));
-            })
-            .catch(() => dispatch(isError(true)))
+          .then((response) => {
+              if (!response.ok) {
+                  throw Error(response.statusText);
+              }
+              return response;
+          })
+          .then((response) => response.json())
+          .then((response) => {
+              dispatch(done(response));
+          })
+          .catch((err) => console.error(err));
     }
 }
 const postData = (url, payload, done) => {

@@ -31,17 +31,16 @@ export const mapDispatchToProps = (dispatch) => {
             dispatch(signin(user))
         },
         signout: () => {
-            //dispatch(push('/'))
             dispatch(signout())
         },
         gotoAllBooks: () => {
             dispatch(push('/allbooks'))
         },
         gotoSettings: () => {
-           dispatch(push('/settings'))
+            dispatch(push('/settings'))
         },
         gotoTwitter: () => {
-           dispatch(twitterSignin())
+            dispatch(twitterSignin())
         },
         getBooks: (url) => {
             dispatch(getBooks(url))
@@ -49,8 +48,8 @@ export const mapDispatchToProps = (dispatch) => {
         request: (book) => {
             dispatch(requestBook(book))
         },
-        getBorrowedBook: (id) => {
-            dispatch(borrowedBook(id))
+        getBorrowedBook: () => {
+            dispatch(borrowedBook())
         },
         returnBorrowedBook: (book) => {
             dispatch(returnBorrowedBook(book));

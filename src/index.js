@@ -6,10 +6,12 @@ import { Provider } from 'react-redux';
 import WebFontLoader from 'webfontloader';
 
 import App from './components/App';
-//import registerServiceWorker from './registerServiceWorker';
-import store, {history} from './store';
+import registerServiceWorker from './registerServiceWorker';
+import store, { history } from './store';
 
+import 'font-awesome/css/font-awesome.min.css';
 import './components/style/styles.css';
+
 WebFontLoader.load({
   google: {
     families: ['Roboto:300,400,500,700', 'Material Icons'],
@@ -17,9 +19,9 @@ WebFontLoader.load({
 });
 
 ReactDOM.render(
-<Provider store={store}>
- <ConnectedRouter history={history}>
-    <App />
- </ConnectedRouter>
-</Provider>, document.getElementById('root'));
-//registerServiceWorker();
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
+  </Provider>, document.getElementById('root'));
+registerServiceWorker();

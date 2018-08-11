@@ -1,50 +1,54 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Button } from 'react-md';
-
+import Masonry from 'react-masonry-component';
 import Book from './Book';
-import { withMainComponent, withResponsive } from '../hoc';
+import { withMainComponent } from '../hoc';
 
 class AllBooks extends Component {
   componentDidMount = () => {
-      this.props.renderAllBooks();
+    this.props.renderAllBooks();
   }
   render() {
-    let { books, handleRequest, user, columnCount, width, isLoading, isError } = this.props;
+    let { books, handleRequest, user } = this.props;
     let label = 'request';
     let username = user.username;
     let userId = user._id;
-   /** if (isLoading) {
-     return <p>Loading...</p>
+
+    const masonryOptions = {
+      transitionDuration: '0.6s',
+      fitWidth: true,
+      gutter: 5
     }
-     if (isError) {
-     return <p>Error...</p>
-    }**/
-         
+    const styles = {
+      container: {
+        marginTop: 80
+      }
+    }
     return (
-      <div className="md-grid">
-        <div className="cards">
-          {
-            books.map(book => {
-              let props = { label, username, userId, handleRequest, ...book }
-              return (
-                <Book
-                  key={book._id}
-                  {...props}
-                />
-              )
-            })
-          }
-        </div>
-      </div>
+      <Masonry
+        className="md-grid"
+        style={styles.container}
+        options={masonryOptions}>
+        {
+          books.map(book => {
+            let props = { label, username, userId, handleRequest, ...book }
+            return (
+              <Book
+                key={book._id}
+                {...props}
+              />
+            )
+          })
+        }
+      </Masonry>
     )
   }
 }
 
 AllBooks.PropTypes = {
-   books: PropTypes.arrayOf(PropTypes.object),
-   handleRequest: PropTypes.func,
-   renderAllBooks: PropTypes.func
+  books: PropTypes.arrayOf(PropTypes.object),
+  handleRequest: PropTypes.func,
+  renderAllBooks: PropTypes.func
 }
 
-export default withMainComponent(withResponsive(AllBooks));
+export default withMainComponent(AllBooks);

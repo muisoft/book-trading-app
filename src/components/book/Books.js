@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Tabs, Tab, TabsContainer } from 'react-md';
-
-import { withMainComponent } from '../hoc';
 
 import MyBooks from './MyBooks';
 import MyRequestBook from './MyRequestBook';
@@ -13,7 +11,7 @@ const Books = () => {
   return (
     <div style={{ marginLeft: -8, marginRight: -8 }}>
       <TabsContainer
-        panelStyle={{ padding: 15, height: 500, marginTop: -25 }}//550
+        panelStyle={{ padding: 15, height: 500, marginTop: -25 }}
         colored
         component="div"
         themed>
@@ -36,8 +34,4 @@ const Books = () => {
   );
 }
 
-Books.PropTypes = {
-  getTabsIndex: PropTypes.func.isRequired
-}
-
-export default withMainComponent(Books);
+export default Books;

@@ -1,3 +1,4 @@
+require('dotenv').config();  
 const { createServer } = require('http');
 const express = require('express');
 const compression = require('compression');
@@ -10,7 +11,7 @@ const mongoose = require( 'mongoose');
 const passport = require( 'passport');
 
 const normalizePort = port => parseInt(port, 10);
-const PORT = normalizePort(process.env.PORT || 5002);
+const PORT = normalizePort(process.env.PORT || 5001);
 
 require('./api/models')(process.env.DB_CONN);
 
@@ -27,6 +28,18 @@ app.use(session({
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
+app.use( passport.initialize());
+app.use( passport.session());
+
+require('./api/config/passport')(passport);
+
+const router = require('./api/routes/router');
+app.use(router);
+
+if (dev) {
+  app.use(morgan('dev'));
+}
+
 if(!dev){
   app.disable('x-powered-by');
   app.use(compression());
@@ -38,23 +51,6 @@ if(!dev){
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
   })
 }
-
-if(dev){
-  app.use(morgan('dev'));
-
-  //app.use(express.static(path.resolve(__dirname, 'public', 'index.html')));
-//  app.get('/*', (req, res) => {
-    //res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
-//  })
-}
-
-app.use( passport.initialize());
-app.use( passport.session());
-
-require('./api/config/passport')(passport);
-
-const router = require('./api/routes/router');
-app.use(router);
 
 const server = createServer(app);
 server.listen(PORT, err => {

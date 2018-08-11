@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Masonry from 'react-masonry-component';
 import { withMainComponent } from '../hoc';
 import Book from './Book';
 
@@ -9,29 +10,45 @@ class MyBooks extends Component {
     }
 
     render() {
-        let { mybooks, deleteBook, user, isLoading, isError } = this.props;
+        let { mybooks, deleteBook, user } = this.props;
         let label = 'delete';
         let username = user.username;
-        // if (isLoading) {
-        // return <p>Loading...</p>
-        //}
 
-        return (
-            <div className="md-grid">
-                <div className="cards">
-                    {
-                        mybooks.map(book => {
-                            let props = { label, deleteBook, username, ...book }
-                            return (
-                                <Book
-                                    key={book._id}
-                                    { ...props}
-                                />
-                            )
-                        })
-                    }
+        const styles = {
+            container: {
+                marginTop: 20
+            }
+        }
+        const masonryOptions = {
+            transitionDuration: '0.6s',
+            fitWidth: true,
+            gutter: 5
+        }
+
+        if (mybooks.length === 0) {
+            return (
+                <div className="md-grid">
+                    <h1 style={{ margin: 'auto', marginTop: 80 }}>You do not add book yet!!! </h1>
                 </div>
-            </div>
+            )
+        }
+        return (
+            <Masonry
+                className="md-grid"
+                style={styles.container}
+                options={masonryOptions}>
+                {
+                    mybooks.map(book => {
+                        let props = { label, deleteBook, username, ...book }
+                        return (
+                            <Book
+                                key={book._id}
+                                {...props}
+                            />
+                        )
+                    })
+                }
+            </Masonry>
         )
     }
 }

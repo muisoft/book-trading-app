@@ -2,15 +2,23 @@ const express = require('express');
 const passport = require('passport');
 const User = require('mongoose').model('User');
 const Book = require('mongoose').model('Book');
-const { allBooks, myBooks, signup } = require('./utils');
-/**import {
-    signup,
-    savePics, allPics,
-    myPics,
-    deletePics,
-    ratePics
-} from './utils';
-**/
+const {
+  allBooks,
+  myBooks,
+  signup,
+  saveBook,
+  requestBook,
+  myRequest,
+  cancelRequest,
+  requestForMe,
+  approvedRequest,
+  borrowedBook,
+  returnBook,
+  deleteBook,
+  updatePassword,
+  updateProfile
+} = require('./utils');
+
 var router = express.Router();
 
 const redir = process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:3000/';
@@ -52,25 +60,44 @@ router.post('/signup', (req, res) => {
   signup(req, res);
 })
 router.get('/allbooks', (req, res) => {
-  console.log('All Books');
-  //allBooks(req, res);
-  Book.find({}, (err, books) => {
-    console.log('Books: '+books);
-    res.json(books);
-  })
+  allBooks(req, res);
 });
 
 router.get('/mybooks', isLoggedIn, (req, res) => {
  myBooks(req, res);
 });
-/**router.post('/savebooks', isLoggedIn, (req, res) => {
-  saveBooks(req, res);
+router.post('/savebook', isLoggedIn, (req, res) => {
+  saveBook(req, res);
 });
-router.post('/deletebooks', isLoggedIn, (req, res) => {
-  deleteBooks(req, res);
+router.post('/deletebook', isLoggedIn, (req, res) => {
+  deleteBook(req, res);
+});
+router.post('/requestbook', isLoggedIn, (req, res) => {
+  requestBook(req, res);
+});
+router.get('/myrequest', isLoggedIn, (req, res) => {
+  myRequest(req, res);
+});
+router.post('/cancelrequest', isLoggedIn, (req, res) => {
+  cancelRequest(req, res);
+});
+router.get('/requestforme', isLoggedIn, (req, res) => {
+  requestForMe(req, res);
+});
+router.post('/approvedrequest', isLoggedIn, (req, res) => {
+  approvedRequest(req, res);
+});
+router.get('/borrowedbook', isLoggedIn, (req, res) => {
+  borrowedBook(req, res);
+});
+router.post('/returnbook', isLoggedIn, (req, res) => {
+  returnBook(req, res);
+});
+router.post('/updateprofile', isLoggedIn, (req, res) => {
+  updateProfile(req, res);
+});
+router.post('/updatepassword', isLoggedIn, (req, res) => {
+  updatePassword(req, res);
 });
 
-router.post('/ratepics', isLoggedIn, (req, res) => {
-  ratePics(req, res);
-}); **/
 module.exports = router;

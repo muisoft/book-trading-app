@@ -1146,6 +1146,10 @@ basic-auth@~2.0.0:
   dependencies:
     safe-buffer "5.1.1"
 
+batch-processor@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/batch-processor/-/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"
+
 batch@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.6.1.tgz#dc34314f4e679318093fc760272525f94bf25c16"
@@ -1992,6 +1996,14 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+create-react-class@^15.6.2:
+  version "15.6.3"
+  resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.3.tgz#2d73237fb3f970ae6ebe011a9e66f46dbca80036"
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
 cross-spawn@5.1.0, cross-spawn@^5.0.1, cross-spawn@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -2505,6 +2517,12 @@ ee-first@1.1.1:
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.27:
   version "1.3.27"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.27.tgz#78ecb8a399066187bb374eede35d9c70565a803d"
+
+element-resize-detector@^1.1.9:
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/element-resize-detector/-/element-resize-detector-1.1.14.tgz#af064a0a618a820ad570a95c5eec5b77be0128c1"
+  dependencies:
+    batch-processor "^1.0.0"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -3195,6 +3213,18 @@ fbjs@^0.8.16, fbjs@^0.8.4:
     promise "^7.1.1"
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.9"
+
+fbjs@^0.8.9:
+  version "0.8.17"
+  resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
+  dependencies:
+    core-js "^1.0.0"
+    isomorphic-fetch "^2.1.1"
+    loose-envify "^1.0.0"
+    object-assign "^4.1.0"
+    promise "^7.1.1"
+    setimmediate "^1.0.5"
+    ua-parser-js "^0.7.18"
 
 figures@^2.0.0:
   version "2.0.0"
@@ -4008,6 +4038,12 @@ ignore-walk@^3.0.1:
 ignore@^3.3.3:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.7.tgz#612289bfb3c220e186a58118618d5be8c1bab021"
+
+imagesloaded@^4.0.0:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/imagesloaded/-/imagesloaded-4.1.4.tgz#1376efcd162bb768c34c3727ac89cc04051f3cc7"
+  dependencies:
+    ev-emitter "^1.0.0"
 
 import-lazy@^2.1.0:
   version "2.1.0"
@@ -5521,7 +5557,7 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-masonry-layout@^4.2.1:
+masonry-layout@^4.2.0, masonry-layout@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/masonry-layout/-/masonry-layout-4.2.1.tgz#1c878b85a88866ba6b39b9bd0e162348aed7ce13"
   dependencies:
@@ -7231,6 +7267,17 @@ react-mason@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/react-mason/-/react-mason-1.1.2.tgz#e771ff1e946a2c4a53c60654cdd3ceeb3683f827"
 
+react-masonry-component@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/react-masonry-component/-/react-masonry-component-6.2.1.tgz#dd23b3129d6b922852b160472e6c9a6256fcdb8a"
+  dependencies:
+    create-react-class "^15.6.2"
+    element-resize-detector "^1.1.9"
+    imagesloaded "^4.0.0"
+    lodash "^4.17.4"
+    masonry-layout "^4.2.0"
+    prop-types "^15.5.8"
+
 react-md@^1.2.8:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/react-md/-/react-md-1.2.8.tgz#727762efb17a6dd2d00a87f671f72f21330fc853"
@@ -8785,6 +8832,10 @@ type-is@~1.6.16:
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+
+ua-parser-js@^0.7.18:
+  version "0.7.18"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.18.tgz#a7bfd92f56edfb117083b69e31d2aa8882d4b1ed"
 
 ua-parser-js@^0.7.9:
   version "0.7.17"

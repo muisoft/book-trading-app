@@ -8,8 +8,7 @@ export const actionsWrapper = (props) => {
             props.getMyBooks({ id: props.user._id });
         },
         renderBorrowedBooks: () => {
-            let id = props.user._id;
-            props.getBorrowedBook({ userId: props.user._id });
+            props.getBorrowedBook();
         },
         renderRequestBookForMe: () => {
             if (props.user._id) {
@@ -20,7 +19,8 @@ export const actionsWrapper = (props) => {
             props.getMyRequest({ id: props.user._id });
         },
         handleRequest: ({ id, request, approved }) => {
-            if(request || approved){
+            console.log('Request: ' + request + ' approved: ' + approved);
+            if (request || approved) {
                 alert('Sorry, It has already been requested, try another one.');
                 return;
             }
@@ -54,7 +54,7 @@ export const actionsWrapper = (props) => {
             props.getMyRequest({ id: props.user._id });
         },
         saveBook: (e) => {
-            props.addNewBook({ ...props.partialState, id: props.user._id });
+            props.addNewBook({ ...props.partialState, owner: props.user._id });
             alert('Successfully added new book');
             props.cancel();
             e.preventDefault();
@@ -74,26 +74,30 @@ export const actionsWrapper = (props) => {
         },
         onSignup: (e) => {
             e.preventDefault();
-            props.signup(props.partialState);
+            let { username, email, password } = props.partialState;
+            
+            if (!username || !email  || !password) {
+                alert('Field(s) is empty, fill it up');
+                return;
+            } else {
+                props.signup(props.partialState);
+            }
         },
         handleRequestForMe: ({ id }) => {
             props.approvedRequest({ bookId: id, userId: props.user._id });
             alert('Successfully approved');
             props.getRequestForMe({ id: props.user._id });
         },
-        getTabIndex: (index) => {
-            props.getCurrentTabIndex(index);
-        },
-        changeProfile: (e) => {
-            props.updateProfile(props.partialState);
-            alert('Changed successfully');
-            props.signin(props.user);
+        changeProfile: (e, profile) => {
+            props.updateProfile(profile);
+            alert('Changed successfully, Changes will take effect next time you login.');
+            //props.signin(props.user);
             props.gotoSettings();
             e.preventDefault();
         },
         changePassword: (e) => {
             let user = props.partialState;
-            if(user.newPassword2 !== user.newPassword){
+            if (user.newPassword2 !== user.newPassword) {
                 alert('The two passwords are not equal');
                 return;
             }
@@ -105,11 +109,6 @@ export const actionsWrapper = (props) => {
         handleSignout: () => {
             //props.resetAll();
             props.signout();
-        },
-        totoTwitter: (e) => {
-            props.gotoTwitter();
-            e.preventDefault();
         }
-
     }
 }

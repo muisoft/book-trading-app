@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Masonry from 'react-masonry-component';
 
 import { withMainComponent } from '../hoc';
 import Book from './Book';
@@ -10,18 +11,34 @@ class RequestBookForMe extends Component {
   }
 
   render() {
-    let { requestsforme, books, user, isLoading, isError, handleRequestForMe } = this.props;
+    let { requestsforme, user, handleRequestForMe } = this.props;
     let label = 'approved';
     let username = user.username;
-    // if (isLoading) {
-    //return <p>Loading...</p>
-    // }
-    //if (isError) {
-    //return <p>Error...</p>
-    // }
+
+    const styles = {
+      container: {
+        marginTop: 20
+      }
+    }
+    const masonryOptions = {
+      transitionDuration: '0.6s',
+      fitWidth: true,
+      gutter: 5
+    }
+
+    if (requestsforme.length === 0) {
+      return (
+        <div className="md-grid">
+          <h1 style={{ margin: 'auto', marginTop: 80 }}>You do not have request book for you yet!!! </h1>
+        </div>
+      )
+    }
+
     return (
-       <div className="md-grid">
-      <div className="cards">
+      <Masonry
+        className="md-grid"
+        style={styles.container}
+        options={masonryOptions}>
         {
           requestsforme.map(book => {
             let props = { label, handleRequestForMe, username, ...book }
@@ -33,8 +50,7 @@ class RequestBookForMe extends Component {
             )
           })
         }
-      </div>
-      </div>
+      </Masonry>
     )
   }
 }
