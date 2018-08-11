@@ -13,7 +13,7 @@ const passport = require( 'passport');
 const normalizePort = port => parseInt(port, 10);
 const PORT = normalizePort(process.env.PORT || 5001);
 
-require('./api/models')(process.env.DB_CONN);
+require('./server/models')(process.env.DB_CONN);
 
 const app = express();
 const dev = app.get('env') !== 'production';
@@ -31,9 +31,9 @@ app.use(session({
 app.use( passport.initialize());
 app.use( passport.session());
 
-require('./api/config/passport')(passport);
+require('./server/config/passport')(passport);
 
-const router = require('./api/routes/router');
+const router = require('./server/routes/router');
 app.use(router);
 
 if (dev) {
