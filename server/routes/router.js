@@ -37,11 +37,11 @@ router.get('/signout', (req, res) => {
 })
 
 router.get('/auth/twitter', (req, res, next) => {
-  return passport.authenticate('twitter-signin')(req, res, next);
+  return passport.authenticate('twitter-login')(req, res, next);
 })
 
 router.get('/auth/twitter/callback',
-      passport.authenticate('twitter-signin', { failureredirect: redir + 'account/login'}),
+      passport.authenticate('twitter-login', { failureredirect: redir + 'account/login'}),
       (req, res) => {
         res.redirect(redir + 'allbooks')
       })
