@@ -8,7 +8,7 @@
 
 # production
 /build
-/pics
+/public/pics
 .env
 # misc
 .DS_Store
